@@ -3,7 +3,7 @@ import {Page, Locator} from '@playwright/test'
 export class HomePage {
     constructor(private readonly page: Page) {};
 
-    //---Navigate to the indedx page---
+    //---Navigate to the index page---
     async goToIndexPage(){
         this.page.goto('/');
     }
@@ -58,8 +58,18 @@ export class HomePage {
         return this.page.getByRole('button', {name: "Search"});
     }
 
-    //---Get Sorting Dropdown with options--
+    //---Get Sorting Dropdown with options---
     get SortingDropdown(): Locator{
         return this.page.locator('select.sort-products-select');
+    }
+
+    //---Get Cards from the catalogue---
+    get AllAvailableProductCards(): Locator{
+        return this.page.locator('.card');
+    }
+
+    //---The catalogue card for a product, matched by its visible name.---
+    ProductCard(name: string):Locator{
+        return this.page.locator('.card', {has: this.page.getByRole('link', {name})});
     }
 }

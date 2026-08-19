@@ -71,6 +71,34 @@ test.describe('Verify searching and sorting elements', () =>{
         await expect(homePage.SearchButton).toBeVisible();
         await expect(homePage.SortingDropdown).toBeVisible();
     });
+
+    test('Verify sorting options for Sorting Dropdown - by value', async()=>{
+        await homePage.SortingDropdown.selectOption('az');
+        await homePage.SortingDropdown.selectOption('za');
+        await homePage.SortingDropdown.selectOption('lohi');
+        await homePage.SortingDropdown.selectOption('hilo');
+    });
+
+    test('Verify sorting options for Sorting Dropdown - by text', async()=>{
+        await homePage.SortingDropdown.selectOption('Sort by name (A to Z)');
+        await homePage.SortingDropdown.selectOption('Sort by name (Z to A)');
+        await homePage.SortingDropdown.selectOption('Sort by price (low to high)');
+        await homePage.SortingDropdown.selectOption('Sort by price (high to low)');
+    });
+
+    test('Verify Product Cards being displayed on the page', async()=>{
+
+        await expect(homePage.BagSvg).toBeVisible();
+        //the test runs too quickly and there is no time to calculate the number of cards without the first validation
+        const cardCount = await homePage.AllAvailableProductCards.count();
+        expect (cardCount).toBeGreaterThan(2);
+        console.log('The number of available cards is '+ cardCount);
+
+    });
+
+    test('Verify Product Card by its name', async()=>{
+        await expect(homePage.ProductCard('Awesome Granite Chips')).toBeVisible();
+    });
 });
 
 

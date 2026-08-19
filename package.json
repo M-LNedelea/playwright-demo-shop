@@ -1,0 +1,39 @@
+{
+  "name": "playwright-demo-shop",
+  "version": "1.0.0",
+  "description": "First attempt of creating a suite of automated tests using playwright",
+  "keywords": [],
+  "homepage": "https://github.com/M-LNedelea/playwright-demo-shop#readme",
+  "bugs": {
+    "url": "https://github.com/M-LNedelea/playwright-demo-shop/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M-LNedelea/playwright-demo-shop.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "test:report": "npx playwright show-report",
+    "test:report:open": "npx playwright show-report --open"
+  },
+  "dependencies": {
+    "node": "^26.4.0",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.0"
+  },
+  "allowScripts": {
+    "node@26.4.0": true
+  }
+}

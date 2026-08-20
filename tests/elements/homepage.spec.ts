@@ -21,6 +21,9 @@ test(`Validate visible elements from the Page's header`, async ({page}) =>{
     //Verify Favorites Icon
         await expect(homePage.FavoritesSvg).toBeVisible();
 
+    //Verify the greeting message for anonymous users
+        await expect(homePage.GetGenericGreetingforAnonymousAccess('Hello guest!')).toBeVisible();
+
     //Verify SignIn button
         await expect(homePage.SignInButton).toBeVisible();
 });

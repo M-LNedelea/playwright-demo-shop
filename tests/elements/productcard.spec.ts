@@ -30,6 +30,14 @@ test.describe('Tests around  ProductCard', async()=>{
         console.log('Card description: '+cardDescription);
        
         await expect(productCard.CardBasketButton(cardName)).toBeVisible();
-        await expect(productCard.CardFavioritesButton(cardName)).toBeVisible();
+        await expect(productCard.CardFavoritesButton(cardName)).toBeVisible();
+
+        await expect(productCard.cardPriceInDollars(cardName)).toBeVisible();
+        const cardPrice = await productCard.cardPriceInDollars(cardName).textContent();
+        console.log('Card price: '+cardPrice);
+
+        await expect(productCard.cardInStockStatus(cardName)).toBeVisible();
+        const cardStockStatus = await productCard.cardInStockStatus(cardName).textContent();
+        console.log('Card stock status: '+cardStockStatus);
     });
 });

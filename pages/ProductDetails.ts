@@ -41,6 +41,9 @@ export class ProductCardIndexPage{
     }
 
     //---Card Price---
+    cardPriceInDollars(name: string): Locator{
+        return this.card(name).locator('*', {hasText: /^\$\d+\.\d{2}$/});
+    };
 
 
     //---Basket button from the card product---
@@ -49,10 +52,13 @@ export class ProductCardIndexPage{
     }
 
     //---Favorites button from the card product---
-    CardFavioritesButton(name: string): Locator{
+    CardFavoritesButton(name: string): Locator{
         return this.card(name).locator('button [data-icon="heart"]');
     }
 
     //---Card stock status message---
+    cardInStockStatus(name: string): Locator{
+        return this.card(name).locator('.card-text', { hasText: / stock/i });
+    }
 
 };

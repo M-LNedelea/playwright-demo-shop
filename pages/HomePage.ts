@@ -1,4 +1,5 @@
 import {Page, Locator} from '@playwright/test'
+import { User } from '../objects/user';
 
 export class HomePage {
     constructor(private readonly page: Page) {};
@@ -43,9 +44,23 @@ export class HomePage {
         return this.page.getByText(givenText);
     }
 
+    //---Greeting the logged-in User---
+     greetingMessage(user: User):Locator{
+        return this.page.getByText(`Hi ${user.name}!`);
+    }
+
+    //---Greeting the logged-in User---
+     guestGreetingMessage():Locator{
+        return this.page.getByText('Hello guest!');
+    }
+
     //---Get SignIn button locator---
     get SignInButton(): Locator{
         return this.page.locator('button [data-icon="sign-in-alt"]');
+    }
+
+     get LogOutButton(): Locator{
+        return this.page.locator('button [data-icon="sign-out-alt"');
     }
 
     //---Get Search Input---
@@ -72,4 +87,5 @@ export class HomePage {
     ProductCard(name: string):Locator{
         return this.page.locator('.card', {has: this.page.getByRole('link', {name})});
     }
+
 }

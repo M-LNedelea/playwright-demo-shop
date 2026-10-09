@@ -43,7 +43,6 @@ export class LoginActions{
         await this.UsernameInputField.fill(user.name);
         await this.PasswordInputField.fill(user.password);
         await this.LoginButton.click();
-        console.log(user.name+" logged in successfully!");
     }
 
     async logoutUser(): Promise<void> {

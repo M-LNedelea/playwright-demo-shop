@@ -60,7 +60,7 @@ export class HomePage {
     }
 
      get LogOutButton(): Locator{
-        return this.page.locator('button [data-icon="sign-out-alt"');
+        return this.page.locator('button [data-icon="sign-out-alt"]');
     }
 
     //---Get Search Input---

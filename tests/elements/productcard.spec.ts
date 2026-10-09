@@ -13,8 +13,7 @@ test.describe('Tests around  ProductCard', async()=>{
 
     test('Identify product card by given name',async({page})=>{
         productCard.OpenProductPage(cardName);
-        console.log(page.url);
-        await expect(page).toHaveURL('/#/product/3');
+        await expect(page).toHaveURL('/#/product/4');
     }); 
     
     test('Verify all elements from card are being visible to the user', async()=>{

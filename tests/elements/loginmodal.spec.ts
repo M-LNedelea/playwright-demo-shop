@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
-import { LoginModal } from '../../pages/LoginModal';
+import { LoginActions } from '../../pages/LoginModal';
 import { HomePage } from '../../pages/HomePage';
 
 test(`Validate SignIn button is displayed in the Page's header and clickable`, async ({page}) =>{
 
-    let loginModal: LoginModal;
+    let loginModal: LoginActions;
     let homePageElements: HomePage;
 
     //Creating the page object
-    loginModal = new LoginModal(page);
+    loginModal = new LoginActions(page);
     homePageElements = new HomePage(page);
     await(loginModal.goToIndexPage());
     
@@ -19,12 +19,12 @@ test(`Validate SignIn button is displayed in the Page's header and clickable`, a
 
 test(`Validate the existance of Input fields, Login button and error message`, async ({page}) =>{
 
-    let loginModal: LoginModal;
+    let loginModal: LoginActions;
     let homePageElements: HomePage;
 
 
     //Creating the page object
-    loginModal = new LoginModal(page);
+    loginModal = new LoginActions(page);
     homePageElements = new HomePage(page);
     await(loginModal.goToIndexPage());
 

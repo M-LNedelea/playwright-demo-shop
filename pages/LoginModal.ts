@@ -2,8 +2,9 @@ import { Page, Locator, expect } from "@playwright/test";
 import { User } from "../objects/user";
 import { HomePage } from "./HomePage";
 
-export class LoginModal{
-    constructor(readonly page: Page) {};
+
+export class LoginActions{
+    constructor(private readonly page: Page) {};
 
     //---Navigate to the index page---
     async goToIndexPage(){
@@ -22,7 +23,7 @@ export class LoginModal{
 
     //---Modal Password input field---
     get PasswordInputField(): Locator{
-        return this.page.getByRole('textbox', { name: 'Password' });
+        return this.page.getByRole('textbox', { name: 'Password' });;
     }
 
     //---Modal Login button for the actual Login process---
@@ -34,24 +35,21 @@ export class LoginModal{
         get ErrorMessage(): Locator{
         return this.page.locator('.error');
     }
-}
-
-export class LoginActions extends LoginModal{
-     constructor( page: Page) {
-         super(page);
-     };
-
-    homePageElements = new HomePage(this.page);
 
     async loginUser(user: User): Promise<void> {
-        this.homePageElements.SignInButton.click();
-
-        this.UsernameInputField.fill(user.name);
-        this.PasswordInputField.fill(user.password);
-        this.LoginButton.click();
+        let homePageElements: HomePage;
+        homePageElements = new HomePage(this.page);
+        await homePageElements.SignInButton.click();
+        await this.UsernameInputField.fill(user.name);
+        await this.PasswordInputField.fill(user.password);
+        await this.LoginButton.click();
+        console.log(user.name+" logged in successfully!");
     }
 
-    async loginStatus(user: User): Promise<void>{
-        await expect(this.homePageElements.greetingMessage(user)).toBeVisible();
-    };
+    async logoutUser(): Promise<void> {
+    let homePageElements: HomePage;
+    homePageElements = new HomePage(this.page);
+    await expect(homePageElements.LogOutButton).toBeVisible();    
+    await homePageElements.LogOutButton.click();
+  }
 }
